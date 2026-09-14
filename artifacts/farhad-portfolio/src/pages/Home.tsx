@@ -8,7 +8,6 @@ import { ServicesSection } from '@/sections/ServicesSection';
 import { SkillsSection } from '@/sections/SkillsSection';
 import { ProjectsSection } from '@/sections/ProjectsSection';
 import { AutomationsSection } from '@/sections/AutomationsSection';
-import { AISection } from '@/sections/AISection';
 import { BeyondFunnelsSection } from '@/sections/BeyondFunnelsSection';
 import { ExperienceSection } from '@/sections/ExperienceSection';
 import { TestimonialsSection } from '@/sections/TestimonialsSection';
@@ -44,7 +43,6 @@ export default function Home() {
         <SkillsSection />
         <ProjectsSection />
         <AutomationsSection />
-        <AISection />
         <BeyondFunnelsSection />
         <ExperienceSection />
         <TestimonialsSection />

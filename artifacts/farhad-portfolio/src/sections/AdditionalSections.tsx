@@ -2,42 +2,12 @@ import { motion } from 'framer-motion';
 import { WHY_WORK_WITH_ME, PROCESS_STEPS, SITE_CONFIG } from '@/data/config';
 import { CheckCircle2, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ToolsSection } from './ToolsSection';
 
 export function AdditionalSections() {
   return (
     <>
-      {/* Tools Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              <span className="text-gradient-primary">Tools</span> I Work With
-            </h2>
-            <p className="text-lg text-muted-foreground">Ecosystem surrounding GoHighLevel implementations.</p>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {["GoHighLevel", "Conversation AI", "Voice AI", "Twilio", "Email", "SMS", "Calendars", "Webhooks", "Zapier", "Make", "Google Sheets", "Chat Widgets", "Forms", "Surveys"].map((tool, i) => (
-              <motion.div
-                key={tool}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: i * 0.05 }}
-                className="px-6 py-3 rounded-full glass-card flex items-center gap-3 border border-border/50 hover:border-primary/50 transition-colors"
-              >
-                <div className="w-2 h-2 rounded-full bg-primary" />
-                <span className="font-medium text-white/90">{tool}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ToolsSection />
 
       {/* Why Work With Me */}
       <section className="py-24 relative bg-card/20">

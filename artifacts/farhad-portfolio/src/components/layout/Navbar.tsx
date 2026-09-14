@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { name: 'Services', href: '#services' },
   { name: 'Projects', href: '#projects' },
   { name: 'Automations', href: '#automations' },
-  { name: 'AI Systems', href: '#ai-systems' },
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
