@@ -19,7 +19,7 @@ export function BeyondFunnelsSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -33,16 +33,14 @@ export function BeyondFunnelsSection() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white">A2P Registration</h3>
             
-            <div className="flex flex-col gap-3 mt-4 flex-1">
-              {["Business Information", "Phone Setup", "Messaging Configuration", "A2P Registration", "Compliance"].map((step, i, arr) => (
-                <div key={step} className="flex flex-col items-center">
-                  <div className="w-full text-center px-4 py-2 rounded-lg bg-background/50 border border-border/50 text-sm text-muted-foreground">
-                    {step}
-                  </div>
-                  {i < arr.length - 1 && <div className="w-px h-3 bg-border" />}
-                </div>
+            <ol className="grid grid-cols-2 gap-2 mt-4">
+              {["Business Information", "Phone Setup", "Messaging Configuration", "A2P Registration", "Compliance"].map((step, i) => (
+                <li key={step} className="min-w-0 flex items-center gap-2 px-3 py-3 rounded-lg bg-background/50 border border-border/50 text-xs leading-relaxed text-muted-foreground">
+                  <span className="text-green-400/80 text-[10px] font-semibold shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{step}</span>
+                </li>
               ))}
-            </div>
+            </ol>
             <p className="text-sm text-muted-foreground mt-6 text-center border-t border-border/50 pt-4">
               Supporting clients through the complete GoHighLevel A2P compliance process.
             </p>
@@ -61,16 +59,14 @@ export function BeyondFunnelsSection() {
             </div>
             <h3 className="text-2xl font-bold mb-4 text-white relative z-10">GHL Migration</h3>
             
-            <div className="flex flex-col gap-3 mt-4 flex-1 relative z-10">
-              {["Existing CRM/System", "Data Preparation", "Contact Migration", "Funnel Recreation", "Workflow Recreation", "Testing", "Go Live"].map((step, i, arr) => (
-                <div key={step} className="flex flex-col items-center">
-                  <div className="w-full text-center px-4 py-2 rounded-lg bg-background/50 border border-border/50 text-sm text-muted-foreground">
-                    {step}
-                  </div>
-                  {i < arr.length - 1 && <div className="w-px h-2 bg-border" />}
-                </div>
+            <ol className="grid grid-cols-2 gap-2 mt-4 relative z-10">
+              {["Existing CRM/System", "Data Preparation", "Contact Migration", "Funnel Recreation", "Workflow Recreation", "Testing", "Go Live"].map((step, i) => (
+                <li key={step} className="min-w-0 flex items-center gap-2 px-3 py-3 rounded-lg bg-background/50 border border-border/50 text-xs leading-relaxed text-muted-foreground">
+                  <span className="text-blue-400 text-[10px] font-semibold shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{step}</span>
+                </li>
               ))}
-            </div>
+            </ol>
           </motion.div>
 
           <motion.div
