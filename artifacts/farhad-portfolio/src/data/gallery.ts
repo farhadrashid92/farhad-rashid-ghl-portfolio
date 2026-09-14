@@ -6,6 +6,7 @@ export interface GalleryItem {
   category: GalleryCategory;
   description: string;
   image: string;
+  liveUrl?: string;
   isSharedScreenshot?: boolean;
 }
 
@@ -13,6 +14,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   // Funnels
   {
     id: "horizon",
+    liveUrl: "https://horizon.viralcoach.com/",
     title: "Horizon",
     category: "Funnels",
     description: "Kids Education & Coaching · Lead Generation Funnel",
@@ -20,6 +22,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "brightpath",
+    liveUrl: "https://brightpathwellness.viralcoach.com/",
     title: "Brightpath Wellness",
     category: "Funnels",
     description: "Wellness & Weight Care · Sales Landing Page",
@@ -27,6 +30,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "k9kountry",
+    liveUrl: "https://k9kountry.viralcoach.com/",
     title: "K9 Kountry",
     category: "Funnels",
     description: "Dog Boarding & Daycare · Booking Funnel",
@@ -34,6 +38,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "impact",
+    liveUrl: "https://impactprofessionals.viralcoach.com/",
     title: "Impact Professionals",
     category: "Funnels",
     description: "Business Coaching · Consultation Funnel",
@@ -41,6 +46,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "michaelgordy",
+    liveUrl: "https://michaelgordyfinancialservice.viralcoach.com/",
     title: "Michael Gordy Financial Service",
     category: "Funnels",
     description: "Insurance & Financial Services · Quote Funnel",
@@ -48,6 +54,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "lawncare",
+    liveUrl: "https://lawncarelaunch.viralcoach.com/",
     title: "Lawn Care Launch",
     category: "Funnels",
     description: "Lawn Care Services · Lead Generation Funnel",

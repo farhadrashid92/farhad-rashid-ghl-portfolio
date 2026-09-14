@@ -85,7 +85,12 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
                       className="w-full h-auto min-h-full object-cover object-top"
                     />
                   </div>
-                  <div className="px-4 pb-4 flex justify-between items-center flex-shrink-0">
+                  <div className="px-4 pb-4 flex flex-wrap gap-4 justify-between items-center flex-shrink-0">
+                    {item.liveUrl && (
+                      <a href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Preview ${item.title} live funnel in a new tab`} className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                        Preview Live Funnel <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
                     {item.isSharedScreenshot && (
                       <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary/50 px-2.5 py-1.5 rounded-md">
                         <Info className="w-3.5 h-3.5" />
@@ -118,6 +123,11 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
                 <p className="text-muted-foreground text-sm flex-1">
                   {item.description}
                 </p>
+                {item.liveUrl && (
+                  <a href={item.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Preview ${item.title} live funnel in a new tab`} className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-medium text-blue-300 transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400">
+                    Preview Live Funnel <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
