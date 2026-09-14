@@ -57,7 +57,10 @@ export function ServicesSection() {
                     transition={{ delay: i * 0.1, duration: 0.5 }}
                     className="group glass-card rounded-2xl p-6 md:p-8 cursor-default relative overflow-hidden h-full flex flex-col"
                   >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-500" />
+                    <div
+                      className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.14), transparent 72%)' }}
+                    />
                     
                     <div className="w-12 h-12 rounded-xl bg-background/50 border border-border flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-6 h-6" />

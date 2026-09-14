@@ -53,7 +53,10 @@ export function BeyondFunnelsSection() {
             transition={{ delay: 0.2 }}
             className="glass-card rounded-2xl p-8 flex flex-col h-full relative overflow-hidden"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 rounded-full blur-[80px]" />
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full"
+              style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 72%)' }}
+            />
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 relative z-10">
               <Database className="w-6 h-6" />
             </div>

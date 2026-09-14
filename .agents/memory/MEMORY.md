@@ -1,1 +1,2 @@
 - [Portfolio reuse](portfolio-reuse.md) — permission context and scope for imported project screenshots.
+- [Motion performance](motion-performance.md) — preserve visible motion without stacking expensive page-wide filters.

@@ -9,7 +9,7 @@ export function StatsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-12 border-y border-border/50 bg-card/30 backdrop-blur-sm relative z-20">
+    <section className="py-12 border-y border-border/50 bg-card/70 relative z-20">
       <div className="container mx-auto px-4 md:px-8">
         <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-border/50">
           {STATS.map((stat, i) => (

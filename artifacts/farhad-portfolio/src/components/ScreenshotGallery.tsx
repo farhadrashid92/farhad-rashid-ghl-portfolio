@@ -43,14 +43,22 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(() => (
+    typeof window === 'undefined' ||
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ));
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDocumentVisible, setIsDocumentVisible] = useState(true);
+  const [isDocumentVisible, setIsDocumentVisible] = useState(() => (
+    typeof document === 'undefined' || !document.hidden
+  ));
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting));
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { rootMargin: '100px 0px' }
+    );
     if (galleryRef.current) observer.observe(galleryRef.current);
     return () => observer.disconnect();
   }, []);
@@ -181,13 +189,16 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
                         className="relative aspect-[16/10] w-full overflow-hidden bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
                         <img
-                          src={item.image}
+                          src={item.thumbnail}
                           alt={item.title}
                           loading="lazy"
+                          decoding="async"
+                          width={640}
+                          height={400}
                           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                           draggable={false}
                         />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="bg-primary/20 text-blue-100 border border-primary/50 px-6 py-2.5 rounded-full font-medium text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg">
                             <Maximize2 className="w-4 h-4" />
                             <span>VIEW FULL</span>
@@ -216,6 +227,7 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
                           src={item.image}
                           alt={item.title}
                           loading="lazy"
+                          decoding="async"
                           className="w-full h-auto min-h-full object-cover object-top"
                         />
                       </div>

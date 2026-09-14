@@ -51,8 +51,7 @@ export function HeroPattern() {
         className={`absolute top-[-25%] left-[20%] w-[60vw] h-[60vw] min-w-[500px] min-h-[500px] mix-blend-screen ${shouldAnimate ? 'aurora-1' : ''}`}
         style={{
           background: 'radial-gradient(ellipse at center, rgba(42, 92, 240, 0.55) 0%, rgba(36, 78, 209, 0.22) 38%, transparent 70%)',
-          animationDuration: '7s',
-          willChange: reducedMotion ? 'auto' : 'transform'
+          willChange: shouldAnimate ? 'transform' : 'auto'
         }}
       />
       
@@ -61,8 +60,7 @@ export function HeroPattern() {
         className={`absolute top-[10%] right-[-15%] w-[70vw] h-[70vw] min-w-[600px] min-h-[600px] mix-blend-screen ${shouldAnimate ? 'aurora-2' : ''}`}
         style={{
           background: 'radial-gradient(ellipse at center, rgba(89, 67, 205, 0.38) 0%, rgba(44, 70, 190, 0.18) 40%, transparent 70%)',
-          animationDuration: '9s',
-          willChange: reducedMotion ? 'auto' : 'transform'
+          willChange: shouldAnimate ? 'transform' : 'auto'
         }}
       />
 
@@ -71,8 +69,7 @@ export function HeroPattern() {
         className={`absolute bottom-[-40%] left-[10%] w-[80vw] h-[80vw] min-w-[600px] min-h-[600px] mix-blend-screen ${shouldAnimate ? 'aurora-3' : ''}`}
         style={{
           background: 'radial-gradient(ellipse at center, rgba(40, 128, 235, 0.42) 0%, rgba(42, 99, 224, 0.14) 40%, transparent 70%)',
-          animationDuration: '8s',
-          willChange: reducedMotion ? 'auto' : 'transform'
+          willChange: shouldAnimate ? 'transform' : 'auto'
         }}
       />
 
@@ -99,52 +96,27 @@ export function HeroPattern() {
             <stop offset="100%" stopColor="transparent" />
           </linearGradient>
 
-          <filter id="hero-glow">
-            <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-            <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
         </defs>
 
-        <g filter="url(#hero-glow)">
+        {/* Static accent paths avoid repainting a blurred, continuously dashed SVG. */}
+        <g>
           <path
             d="M-100,200 C300,300 400,100 800,400 S1200,600 1600,200"
             fill="none"
             stroke="url(#hero-grad-primary)"
             strokeWidth="2"
-            className="flowing-path"
-            style={{
-              animationPlayState: shouldAnimate ? 'running' : 'paused',
-              strokeDasharray: '240 650',
-              animationDuration: '6s',
-            }}
           />
           <path
             d="M-100,500 C400,400 600,800 1000,500 S1400,200 1800,600"
             fill="none"
             stroke="url(#hero-grad-accent)"
             strokeWidth="1.5"
-            className="flowing-path-reverse"
-            style={{
-              animationPlayState: shouldAnimate ? 'running' : 'paused',
-              strokeDasharray: '200 500',
-              animationDuration: '7s',
-              animationDelay: '-5s'
-            }}
           />
           <path
             d="M200,-100 C100,300 600,500 800,200 S1000,-100 1400,300"
             fill="none"
             stroke="url(#hero-grad-muted)"
             strokeWidth="2"
-            className="flowing-path-slow"
-            style={{
-              animationPlayState: shouldAnimate ? 'running' : 'paused',
-              strokeDasharray: '300 700',
-              animationDuration: '8s',
-            }}
           />
         </g>
       </svg>

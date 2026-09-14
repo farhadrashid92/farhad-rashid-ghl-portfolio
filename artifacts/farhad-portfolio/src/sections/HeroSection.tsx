@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { SITE_CONFIG } from '@/data/config';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,37 @@ import { HeroPattern } from '@/components/HeroPattern';
 
 export function HeroSection() {
   const reducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const shouldAnimate = !reducedMotion && isVisible;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: '100px' }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsVisible(false);
+        return;
+      }
+      const section = sectionRef.current;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      setIsVisible(
+        rect.top < window.innerHeight + 100 &&
+        rect.bottom > -100
+      );
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   const scrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -17,7 +49,7 @@ export function HeroSection() {
   const badges = ["GoHighLevel", "Automation", "Funnels", "CRM", "AI"];
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-center pt-20 pb-16 overflow-hidden z-0">
+    <section ref={sectionRef} id="home" className="relative min-h-[100dvh] flex items-center pt-20 pb-16 overflow-hidden z-0">
       <HeroPattern />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -31,7 +63,7 @@ export function HeroSection() {
             className="flex flex-col gap-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary w-fit shadow-[0_0_15px_hsl(var(--primary)/0.15)]">
-              <CircleDot className="w-4 h-4 animate-pulse" />
+              <CircleDot className={`w-4 h-4 ${shouldAnimate ? 'animate-pulse' : ''}`} />
               <span className="text-sm font-medium tracking-wide">Available for GHL Projects</span>
             </div>
             
@@ -67,7 +99,12 @@ export function HeroSection() {
           >
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] mx-auto lg:ml-auto lg:mr-8">
               {/* Elegant glow behind portrait */}
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[60px] opacity-60 mix-blend-screen" />
+              <div
+                className="absolute inset-[-8%] rounded-full opacity-60 mix-blend-screen"
+                style={{
+                  background: 'radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 68%)',
+                }}
+              />
               
               {/* Outer decorative ring */}
               <div className="absolute inset-0 rounded-full border border-primary/20" />
@@ -75,7 +112,8 @@ export function HeroSection() {
                 className="absolute inset-4 rounded-full border border-primary/30 border-dashed"
                 style={{ 
                   animation: 'spin 60s linear infinite reverse',
-                  animationPlayState: reducedMotion ? 'paused' : 'running'
+                  animationPlayState: shouldAnimate ? 'running' : 'paused',
+                  willChange: shouldAnimate ? 'transform' : 'auto',
                 }} 
               />
               
@@ -83,8 +121,11 @@ export function HeroSection() {
               <div className="absolute inset-8 rounded-full overflow-hidden border border-white/10 bg-card shadow-2xl z-10">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-transparent z-10 pointer-events-none mix-blend-overlay" />
                 <img 
-                  src="/assets/profile.png" 
+                  src="/assets/profile.webp"
                   alt="Farhad Rashid" 
+                  width={400}
+                  height={400}
+                  decoding="async"
                   className="w-full h-full object-cover object-top"
                 />
               </div>
@@ -107,19 +148,19 @@ export function HeroSection() {
                     animate={{ 
                       opacity: 1,
                       scale: 1,
-                      y: reducedMotion ? 0 : [0, -8, 0]
+                      y: shouldAnimate ? [0, -8, 0] : 0
                     }}
                     transition={{ 
                       opacity: { delay: 0.6 + (i * 0.1), duration: 0.6 },
                       scale: { delay: 0.6 + (i * 0.1), duration: 0.6, type: "spring" },
                       y: { 
-                        repeat: Infinity, 
+                        repeat: shouldAnimate ? Infinity : 0,
                         duration: 4 + i, 
                         ease: "easeInOut",
                         delay: i * 0.4
                       }
                     }}
-                    className="absolute z-20 glass-card px-3 py-1.5 sm:px-4 sm:py-2 rounded-full whitespace-nowrap text-[11px] sm:text-xs md:text-sm font-medium shadow-xl flex items-center gap-2 border border-white/10 bg-background/60 backdrop-blur-md"
+                    className="absolute z-20 glass-card px-3 py-1.5 sm:px-4 sm:py-2 rounded-full whitespace-nowrap text-[11px] sm:text-xs md:text-sm font-medium shadow-xl flex items-center gap-2 border border-white/10 bg-background/90"
                     style={pos}
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-primary" />

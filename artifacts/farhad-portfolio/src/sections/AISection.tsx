@@ -48,7 +48,10 @@ export function AISection() {
             viewport={{ once: true, margin: "-100px" }}
             className="glass-card rounded-2xl p-8 relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" />
+            <div
+              className="absolute top-0 right-0 w-64 h-64 rounded-full"
+              style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 72%)' }}
+            />
             
             <h3 className="text-xl font-bold text-white mb-8 border-b border-border/50 pb-4">AI Workflow Visualization</h3>
             

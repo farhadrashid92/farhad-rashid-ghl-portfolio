@@ -146,24 +146,14 @@
   }
 }
 
-/* Base noise texture overlay for the entire app */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 /* Glare effects for premium feel */
 .glass-card {
   background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
@@ -185,41 +175,6 @@ body::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-}
-
-/* Workflow animation */
-.workflow-line {
-  stroke-dasharray: 10;
-  animation: dash 20s linear infinite;
-}
-
-@keyframes dash {
-  to {
-    stroke-dashoffset: -1000;
-  }
-}
-
-/* Background Path Animations */
-.flowing-path {
-  animation: pathFlow 25s linear infinite;
-}
-
-.flowing-path-reverse {
-  animation: pathFlowReverse 30s linear infinite;
-}
-
-.flowing-path-slow {
-  animation: pathFlow 45s linear infinite;
-}
-
-@keyframes pathFlow {
-  from { stroke-dashoffset: 2000; }
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes pathFlowReverse {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: 2000; }
 }
 
 /* Aurora CSS Animations (replacing JS rAF) */
@@ -252,8 +207,8 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flowing-path, .flowing-path-reverse, .flowing-path-slow, .workflow-line,
-  .aurora-1, .aurora-2, .aurora-3 {
+  .aurora-1, .aurora-2, .aurora-3,
+  .animate-pulse, .animate-spin {
     animation: none !important;
   }
 }

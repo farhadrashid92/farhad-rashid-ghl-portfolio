@@ -7,7 +7,10 @@ export function AutomationsSection() {
     <section id="automations" className="py-24 relative overflow-hidden z-0">
       <SectionBackground variant="automations" />
       {/* Background elements */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 -z-10" />
+      <div
+        className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full -translate-y-1/2 -z-10"
+        style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.14), transparent 72%)' }}
+      />
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div

@@ -8,7 +8,7 @@ export function ContactDock() {
   return (
     <aside
       aria-label="Quick contact"
-      className="fixed left-1/2 z-30 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-[#090b10]/95 py-2 pl-5 pr-2 text-white shadow-[0_8px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+      className="fixed left-1/2 z-30 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-[#090b10] py-2 pl-5 pr-2 text-white shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
       style={{ bottom: 'calc(16px + env(safe-area-inset-bottom, 0px))' }}
     >
       <div className="mr-1 whitespace-nowrap">

@@ -21,27 +21,45 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let frame = 0;
+    const updateScrolledState = () => {
+      frame = 0;
+      const nextIsScrolled = window.scrollY > 50;
+      setIsScrolled((previous) => (
+        previous === nextIsScrolled ? previous : nextIsScrolled
+      ));
+    };
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
-      // Update active section based on scroll position
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
-      let current = '';
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= (element.offsetTop - 100)) {
-          current = section;
-        }
-      }
-      
-      if (current) {
-        setActiveSection(current);
-      }
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateScrolledState);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    updateScrolledState();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionElements = NAV_LINKS
+      .map((link) => document.getElementById(link.href.substring(1)))
+      .filter((element): element is HTMLElement => Boolean(element));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (visibleSection) {
+          setActiveSection(visibleSection.target.id);
+        }
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+    );
+
+    sectionElements.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (href: string) => {
@@ -59,7 +77,7 @@ export function Navbar() {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'py-4 bg-background/80 backdrop-blur-md border-b border-border/50 shadow-lg'
+            ? 'py-4 bg-background/95 border-b border-border/50 shadow-lg'
             : 'py-6 bg-transparent'
         }`}
       >
@@ -74,7 +92,7 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden 2xl:flex items-center gap-1 bg-card/50 backdrop-blur-md px-2 py-1.5 rounded-full border border-border/50">
+          <div className="hidden 2xl:flex items-center gap-1 bg-card/90 px-2 py-1.5 rounded-full border border-border/50">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
@@ -117,7 +135,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 px-6 2xl:hidden flex flex-col h-[100dvh] overflow-y-auto"
+            className="fixed inset-0 z-40 bg-background pt-24 px-6 2xl:hidden flex flex-col h-[100dvh] overflow-y-auto"
           >
             <div className="flex flex-col gap-6 text-xl">
               {NAV_LINKS.map((link) => (
