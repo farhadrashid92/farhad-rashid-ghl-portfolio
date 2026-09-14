@@ -5,7 +5,8 @@ export const SITE_CONFIG = {
   description: "I build and optimize GoHighLevel systems that help businesses capture leads, automate follow-ups, manage opportunities, and improve their client journey.",
   ogTitle: "Farhad Rashid | GoHighLevel Specialist",
   ogDescription: "GoHighLevel funnels, automation, CRM, AI systems, integrations and client onboarding.",
-  email: "contact@example.com", // Pending real email
+  email: "farhadrashid829@gmail.com",
+  phone: "+923252466554",
   socials: {
     linkedin: "https://linkedin.com/in/#", // Pending real URL
     github: "https://github.com/#" // Pending real URL
@@ -203,36 +204,40 @@ export const TESTIMONIALS = [
   {
     id: 1,
     name: "Imran Malik",
-    role: "Agency Owner",
-    location: "United Kingdom",
-    content: "Farhad completely transformed how our agency handles new leads. The GHL automation he built saves us hours every week. Truly a specialist who understands the platform inside out.",
+    image: `${import.meta.env.BASE_URL}images/testimonials/c1-BZ59bRP5.jpg`,
+    role: "Founder, Medicare Clinics",
+    location: "London, UK",
+    content: "He explains everything in plain language and never disappears mid-project.",
     rating: 5,
     isDemo: true
   },
   {
     id: 2,
     name: "Rachel Bennett",
+    image: `${import.meta.env.BASE_URL}images/testimonials/c2-B3UlrVBw.jpg`,
     role: "Marketing Director",
-    location: "United States",
-    content: "We needed a complex pipeline setup and custom onboarding flows. Farhad mapped it all out perfectly and executed it flawlessly. Our conversion rates have improved simply because leads don't fall through the cracks anymore.",
+    location: "Austin, TX",
+    content: "Leads finally land in the right pipeline stage automatically. Honestly the smoothest handover I've had with a freelancer.",
     rating: 5,
     isDemo: true
   },
   {
     id: 3,
     name: "Marcus Bell",
-    role: "Consultant",
-    location: "Canada",
-    content: "The private mentorship funnel he built is exceptional. From the initial opt-in to the automated follow-ups and AI integrations, everything runs like clockwork. Highly recommend his services.",
+    image: `${import.meta.env.BASE_URL}images/testimonials/c3-Cmd55gc1.jpg`,
+    role: "Owner, Bell Property Group",
+    location: "Atlanta, GA",
+    content: "Communication was fast even across time zones.",
     rating: 5,
     isDemo: true
   },
   {
     id: 4,
     name: "Layla Haddad",
-    role: "Clinic Manager",
-    location: "UAE",
-    content: "Our dental clinic was struggling to manage appointments. Farhad's GoHighLevel system automated our reminders and follow-ups, drastically reducing no-shows.",
+    image: `${import.meta.env.BASE_URL}images/testimonials/c4-DUn6OOgA.jpg`,
+    role: "Co-founder, Glow Aesthetics",
+    location: "Dubai, UAE",
+    content: "He tuned the script with us until it sounded exactly like our brand.",
     rating: 5,
     isDemo: true
   }

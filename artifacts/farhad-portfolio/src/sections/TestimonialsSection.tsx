@@ -58,7 +58,7 @@ export function TestimonialsSection() {
               Client <span className="text-gradient-primary">Testimonials</span>
             </h2>
             <div className="text-lg text-muted-foreground flex items-center gap-2">
-              Sample layout — real client feedback coming soon.
+              Reference testimonials — not endorsements of Farhad.
               <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 text-xs">Demo Content</Badge>
             </div>
           </div>
@@ -115,11 +115,12 @@ export function TestimonialsSection() {
                   <p className="text-lg text-white/90 leading-relaxed mb-8 flex-grow">
                     "{testimonial.content}"
                   </p>
+                  <a href="https://subhankhan.website/" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground underline mb-4">
+                    Demo excerpt from Subhan Khan's portfolio
+                  </a>
                   
                   <div className="flex items-center gap-4 mt-auto pt-6 border-t border-border/50">
-                    <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center text-muted-foreground font-bold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </div>
+                    <img src={testimonial.image} alt={testimonial.name} loading="lazy" width={48} height={48} className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
                     <div>
                       <h4 className="font-bold text-white">{testimonial.name}</h4>
                       <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.location}</p>

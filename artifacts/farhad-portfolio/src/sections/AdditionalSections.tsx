@@ -151,15 +151,27 @@ export function AdditionalSections() {
                     <ChevronRight className="ml-2 w-5 h-5" />
                   </Button>
                 </a>
-                <a href={`mailto:${SITE_CONFIG.email}`} className="w-full sm:w-auto">
+                <a href="https://wa.me/923252466554" className="w-full sm:w-auto">
                   <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base bg-background/50 w-full sm:w-auto border-border/50">
                     Send Me a Message
                   </Button>
                 </a>
               </div>
               
-              <div className="mt-8 text-sm text-muted-foreground/70 relative z-10 bg-background/50 inline-block px-4 py-2 rounded-lg border border-border/50">
-                Note: Contact destinations pending configuration.
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm relative z-10">
+                <a
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  className="text-muted-foreground hover:text-white transition-colors"
+                >
+                  {SITE_CONFIG.email}
+                </a>
+                <span className="hidden sm:inline text-muted-foreground/50">•</span>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="text-muted-foreground hover:text-white transition-colors"
+                >
+                  {SITE_CONFIG.phone}
+                </a>
               </div>
             </motion.div>
           </div>

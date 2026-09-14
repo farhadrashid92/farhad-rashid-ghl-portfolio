@@ -42,6 +42,16 @@ export function Footer() {
               <a href="#projects" className="text-sm text-muted-foreground hover:text-white transition-colors">Projects</a>
               <a href="#experience" className="text-sm text-muted-foreground hover:text-white transition-colors">Experience</a>
             </div>
+
+            <div className="flex flex-col sm:flex-row items-center md:items-end gap-2 text-sm">
+              <a href={`mailto:${SITE_CONFIG.email}`} className="text-muted-foreground hover:text-white transition-colors">
+                {SITE_CONFIG.email}
+              </a>
+              <span className="hidden sm:inline text-muted-foreground/50">•</span>
+              <a href={`tel:${SITE_CONFIG.phone}`} className="text-muted-foreground hover:text-white transition-colors">
+                {SITE_CONFIG.phone}
+              </a>
+            </div>
           </div>
         </div>
         
