@@ -1,10 +1,11 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { ArrowUpRight, Image as ImageIcon, Info, Maximize2, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { GALLERY_ITEMS } from '@/data/gallery';
 import type { GalleryCategory } from '@/data/gallery';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
 import {
   Dialog,
   DialogContent,
@@ -20,12 +21,22 @@ export interface ScreenshotGalleryProps {
 
 export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
   const items = GALLERY_ITEMS.filter((item) => item.category === category);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const autoScroll = useMemo(() => AutoScroll({
+    direction: category === 'Funnels' ? 'backward' : 'forward',
+    speed: 0.7,
+    startDelay: 0,
+    playOnInit: false,
+    stopOnInteraction: false,
+    stopOnMouseEnter: false,
+    stopOnFocusIn: false,
+  }), [category]);
   
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true, 
     align: 'center',
     skipSnaps: false
-  });
+  }, [autoScroll]);
   
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -36,6 +47,13 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDocumentVisible, setIsDocumentVisible] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting));
+    if (galleryRef.current) observer.observe(galleryRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Initialize prefers-reduced-motion
   useEffect(() => {
@@ -77,20 +95,23 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
     setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
-  const shouldPlay = isPlaying && !isHovered && !isModalOpen && isDocumentVisible;
+  const shouldPlay = isPlaying && !isHovered && !isModalOpen && isDocumentVisible && isInView;
 
   useEffect(() => {
-    if (!emblaApi || !shouldPlay) return;
-    const interval = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [emblaApi, shouldPlay]);
+    if (!emblaApi) return;
+    if (shouldPlay) autoScroll.play();
+    else autoScroll.stop();
+    return () => autoScroll.stop();
+  }, [emblaApi, shouldPlay, autoScroll]);
 
   return (
-    <div className="flex flex-col">
+    <div ref={galleryRef} className="flex flex-col">
       {/* Controls & Note Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         {category === 'Automations' ? (
@@ -141,10 +162,10 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
           maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)' 
         }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         onFocus={() => setIsHovered(true)}
-        onBlur={() => setIsHovered(false)}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) setIsHovered(false);
+        }}
       >
         <div className="overflow-hidden py-4 -mx-4 px-4 md:-mx-8 md:px-8" ref={emblaRef}>
           <div className="flex ml-[-1rem] md:ml-[-1.5rem]">
