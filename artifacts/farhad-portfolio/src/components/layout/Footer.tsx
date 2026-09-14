@@ -55,9 +55,8 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+        <div className="border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; {year} {SITE_CONFIG.name}. All rights reserved.</p>
-          <p>Built exclusively for GoHighLevel.</p>
         </div>
       </div>
     </footer>

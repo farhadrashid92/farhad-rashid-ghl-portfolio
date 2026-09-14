@@ -9,17 +9,8 @@ import {
   Star, 
   Share2, 
   Bot, 
-  ArrowRightLeft,
-  ChevronRight
+  ArrowRightLeft
 } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 const iconMap: Record<string, any> = {
   "funnel": Filter,
@@ -56,14 +47,13 @@ export function ServicesSection() {
             const Icon = iconMap[service.icon] || Workflow;
             
             return (
-              <Dialog key={service.title}>
-                <DialogTrigger asChild>
-                  <motion.div
+                  <motion.article
+                    key={service.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ delay: i * 0.1, duration: 0.5 }}
-                    className="group glass-card rounded-2xl p-6 md:p-8 cursor-pointer relative overflow-hidden h-full flex flex-col"
+                    className="group glass-card rounded-2xl p-6 md:p-8 cursor-default relative overflow-hidden h-full flex flex-col"
                   >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors duration-500" />
                     
@@ -75,28 +65,11 @@ export function ServicesSection() {
                       {service.title}
                     </h3>
                     
-                    <p className="text-muted-foreground line-clamp-3 text-sm flex-grow">
+                    <p className="text-muted-foreground text-sm flex-grow">
                       {service.description}
                     </p>
                     
-                    <div className="mt-6 flex items-center text-sm font-medium text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                      View Details <ChevronRight className="w-4 h-4 ml-1" />
-                    </div>
-                  </motion.div>
-                </DialogTrigger>
-                
-                <DialogContent className="bg-card border-border/50 max-w-md">
-                  <DialogHeader>
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <DialogTitle className="text-2xl">{service.title}</DialogTitle>
-                    <DialogDescription className="text-base pt-4 leading-relaxed">
-                      {service.description}
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
+                  </motion.article>
             );
           })}
         </div>
