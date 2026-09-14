@@ -1,5 +1,5 @@
 import { SITE_CONFIG } from '@/data/config';
-import { Linkedin, Github } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -22,17 +22,12 @@ export function Footer() {
             <div className="flex gap-4">
               <a 
                 href={SITE_CONFIG.socials.linkedin} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href={SITE_CONFIG.socials.github} 
-                className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
               </a>
             </div>
             

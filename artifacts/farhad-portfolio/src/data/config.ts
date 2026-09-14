@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   email: "farhadrashid829@gmail.com",
   phone: "+923252466554",
   socials: {
-    linkedin: "https://linkedin.com/in/#", // Pending real URL
+    linkedin: "https://www.linkedin.com/in/farhad-rashid/",
     github: "https://github.com/#" // Pending real URL
   }
 };
