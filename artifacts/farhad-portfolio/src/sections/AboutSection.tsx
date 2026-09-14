@@ -52,7 +52,7 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch"
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 items-stretch"
           >
             <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
               <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Ecosystem Mastery</h3>
@@ -65,6 +65,18 @@ export function AboutSection() {
               <h3 className="text-lg font-semibold mb-3 text-blue-400">Web &amp; CRM Development</h3>
               <p className="text-sm text-muted-foreground leading-6">
                 WordPress, custom code, and modern no-code stacks — paired with HTML, CSS, JS and CRM architecture.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">AI Conversations &amp; Follow-Up</h3>
+              <p className="text-sm text-muted-foreground leading-6">
+                GoHighLevel conversation AI, voice agents, lead qualification, appointment booking, and personalized email and SMS follow-up.
+              </p>
+            </div>
+            <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Client Onboarding &amp; Retention</h3>
+              <p className="text-sm text-muted-foreground leading-6">
+                Welcome sequences, intake forms, onboarding pipelines, review requests, and referral workflows that support the client journey beyond the first sale.
               </p>
             </div>
           </motion.div>
