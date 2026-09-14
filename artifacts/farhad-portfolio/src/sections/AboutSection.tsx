@@ -53,16 +53,16 @@ export function AboutSection() {
             className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch"
           >
             <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
-              <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Automation Specialist</h3>
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Ecosystem Mastery</h3>
               <p className="text-sm text-muted-foreground leading-6">
-                Workflow automation, lead follow-up, appointment systems, pipelines, notifications, email and SMS sequences.
+                Funnels, CRM, automations, pipelines, SaaS mode, memberships, AI bots, voice AI, reputation, integrations.
               </p>
             </div>
 
             <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
-              <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Systems Builder</h3>
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">Web &amp; CRM Development</h3>
               <p className="text-sm text-muted-foreground leading-6">
-                Funnels, CRM, onboarding, A2P, migrations, integrations, review systems, referral systems, AI bots and voice agents.
+                WordPress, custom code, and modern no-code stacks — paired with HTML, CSS, JS and CRM architecture.
               </p>
             </div>
           </motion.div>

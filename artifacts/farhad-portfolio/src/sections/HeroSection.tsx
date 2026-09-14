@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { SITE_CONFIG } from '@/data/config';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CircleDot } from 'lucide-react';
+import { HeroPattern } from '@/components/HeroPattern';
 
 export function HeroSection() {
   const scrollTo = (href: string) => {
@@ -18,7 +19,7 @@ export function HeroSection() {
       {/* Background glow effects */}
       <div className="absolute top-1/4 -left-64 w-96 h-96 bg-primary/20 rounded-full blur-[128px] opacity-50" />
       <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] opacity-50" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+      <HeroPattern />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
