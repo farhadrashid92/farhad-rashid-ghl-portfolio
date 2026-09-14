@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WORKFLOWS } from '@/data/config';
 import { Play, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
+import { ScreenshotGallery } from '@/components/ScreenshotGallery';
 
 export function AutomationsSection() {
   const [activeWorkflowId, setActiveWorkflowId] = useState(WORKFLOWS[0].id);
@@ -47,6 +48,22 @@ export function AutomationsSection() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Interactive visual maps of the GoHighLevel automation logic driving client growth and reducing manual tasks.
+          </p>
+        </motion.div>
+
+        <ScreenshotGallery category="Automations" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-24 mb-12"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold mb-3">
+            Interactive Workflow Simulator
+          </h3>
+          <p className="text-muted-foreground text-lg max-w-2xl">
+            Explore how each automation moves a lead through the client journey.
           </p>
         </motion.div>
 
