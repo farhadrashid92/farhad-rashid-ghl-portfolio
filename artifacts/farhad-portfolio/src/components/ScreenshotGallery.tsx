@@ -42,7 +42,7 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="group relative flex flex-col glass-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-colors"
+              className="group relative flex flex-col glass-card rounded-2xl overflow-hidden"
             >
               <Dialog>
                 <DialogTrigger asChild>
