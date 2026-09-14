@@ -67,10 +67,10 @@ export function Navbar() {
           <a 
             href="#home" 
             onClick={(e) => { e.preventDefault(); scrollTo('#home'); }}
-            className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2"
+            aria-label={`${SITE_CONFIG.name} — Home`}
+            className="text-[22px] font-extrabold tracking-tight text-white inline-flex items-baseline leading-none rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"
           >
-            <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-sm">FR</span>
-            {SITE_CONFIG.name}
+            FARHAD<span className="text-sky-400">.</span>
           </a>
 
           {/* Desktop Nav */}
