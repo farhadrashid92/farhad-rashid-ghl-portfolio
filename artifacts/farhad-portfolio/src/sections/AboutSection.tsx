@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
+import { SectionBackground } from '@/components/SectionBackground';
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="about" className="py-24 relative z-0">
+      <SectionBackground variant="about" />
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

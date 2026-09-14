@@ -198,3 +198,62 @@ body::after {
     stroke-dashoffset: -1000;
   }
 }
+
+/* Background Path Animations */
+.flowing-path {
+  animation: pathFlow 25s linear infinite;
+}
+
+.flowing-path-reverse {
+  animation: pathFlowReverse 30s linear infinite;
+}
+
+.flowing-path-slow {
+  animation: pathFlow 45s linear infinite;
+}
+
+@keyframes pathFlow {
+  from { stroke-dashoffset: 2000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pathFlowReverse {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 2000; }
+}
+
+/* Aurora CSS Animations (replacing JS rAF) */
+.aurora-1 {
+  animation: auroraFloat1 20s ease-in-out infinite alternate;
+}
+.aurora-2 {
+  animation: auroraFloat2 25s ease-in-out infinite alternate-reverse;
+}
+.aurora-3 {
+  animation: auroraFloat3 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraFloat1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, -30px, 0) scale(1.05); }
+  100% { transform: translate3d(-30px, 20px, 0) scale(0.95); }
+}
+
+@keyframes auroraFloat2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-40px, 20px, 0) scale(0.95); }
+  100% { transform: translate3d(20px, -40px, 0) scale(1.05); }
+}
+
+@keyframes auroraFloat3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(20px, 40px, 0) scale(1.05); }
+  100% { transform: translate3d(-40px, -20px, 0) scale(0.95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowing-path, .flowing-path-reverse, .flowing-path-slow, .workflow-line,
+  .aurora-1, .aurora-2, .aurora-3 {
+    animation: none !important;
+  }
+}

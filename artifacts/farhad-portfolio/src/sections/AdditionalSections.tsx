@@ -3,6 +3,7 @@ import { WHY_WORK_WITH_ME, PROCESS_STEPS, SITE_CONFIG } from '@/data/config';
 import { CheckCircle2, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ToolsSection } from './ToolsSection';
+import { SectionBackground } from '@/components/SectionBackground';
 
 export function AdditionalSections() {
   return (
@@ -10,8 +11,8 @@ export function AdditionalSections() {
       <ToolsSection />
 
       {/* Why Work With Me */}
-      <section className="py-24 relative bg-card/20">
-        <div className="container mx-auto px-4 md:px-8">
+      <section className="py-24 relative bg-card/20 z-0">
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -96,8 +97,9 @@ export function AdditionalSections() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 relative bg-card/40 border-t border-border/50">
-        <div className="container mx-auto px-4 md:px-8">
+      <section id="contact" className="py-24 relative bg-card/40 border-t border-border/50 z-0">
+        <SectionBackground variant="contact" />
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { SERVICES } from '@/data/config';
+import { SectionBackground } from '@/components/SectionBackground';
 import { 
   Filter, 
   Workflow, 
@@ -26,8 +27,9 @@ const iconMap: Record<string, any> = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 relative bg-card/20">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="services" className="py-24 relative bg-card/20 z-0">
+      <SectionBackground variant="services" />
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

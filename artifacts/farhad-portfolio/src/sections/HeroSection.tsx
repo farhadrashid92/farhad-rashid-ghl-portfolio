@@ -17,7 +17,7 @@ export function HeroSection() {
   const badges = ["GoHighLevel", "Automation", "Funnels", "CRM", "AI"];
 
   return (
-    <section id="home" className="relative min-h-[100dvh] flex items-center pt-20 pb-16 overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] flex items-center pt-20 pb-16 overflow-hidden z-0">
       <HeroPattern />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
