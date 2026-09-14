@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { SITE_CONFIG } from '@/data/config';
-import { Workflow, Database } from 'lucide-react';
 
 export function AboutSection() {
   return (
@@ -52,24 +50,18 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch"
           >
-            <div className="glass-card rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
-                <Workflow className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">GHL Automation Specialist</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Automation Specialist</h3>
+              <p className="text-sm text-muted-foreground leading-6">
                 Workflow automation, lead follow-up, appointment systems, pipelines, notifications, email and SMS sequences.
               </p>
             </div>
 
-            <div className="glass-card rounded-2xl p-8 hover:-translate-y-2 transition-transform duration-300 mt-0 sm:mt-12">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6">
-                <Database className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-white">GHL Systems Builder</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-[#10131b] to-[#080b11] p-6 motion-safe:transition-all motion-safe:duration-300 motion-safe:hover:-translate-y-1 hover:border-blue-500/40">
+              <h3 className="text-lg font-semibold mb-3 text-blue-400">GHL Systems Builder</h3>
+              <p className="text-sm text-muted-foreground leading-6">
                 Funnels, CRM, onboarding, A2P, migrations, integrations, review systems, referral systems, AI bots and voice agents.
               </p>
             </div>
