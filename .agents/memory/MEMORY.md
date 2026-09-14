@@ -1,0 +1,1 @@
+- [Portfolio reuse](portfolio-reuse.md) — permission context and scope for imported project screenshots.
