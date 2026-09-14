@@ -13,6 +13,7 @@ import { ExperienceSection } from '@/sections/ExperienceSection';
 import { TestimonialsSection } from '@/sections/TestimonialsSection';
 import { AdditionalSections } from '@/sections/AdditionalSections';
 import { SITE_CONFIG } from '@/data/config';
+import { ContactDock } from '@/components/ContactDock';
 
 export default function Home() {
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-foreground dark selection:bg-primary/30 pb-[calc(100px+env(safe-area-inset-bottom,0px))]">
       <Navbar />
       
       <main>
@@ -50,6 +51,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <ContactDock />
     </div>
   );
 }
