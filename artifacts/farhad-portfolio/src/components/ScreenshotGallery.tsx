@@ -111,12 +111,6 @@ export function ScreenshotGallery({ category }: ScreenshotGalleryProps) {
                   <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 text-xs">
                     {item.category}
                   </Badge>
-                  {item.isSharedScreenshot && (
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium flex items-center gap-1">
-                      <Info className="w-3 h-3" />
-                      Shared UI
-                    </span>
-                  )}
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {item.title}

@@ -115,9 +115,6 @@ export function TestimonialsSection() {
                   <p className="text-lg text-white/90 leading-relaxed mb-8 flex-grow">
                     "{testimonial.content}"
                   </p>
-                  <a href="https://subhankhan.website/" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground underline mb-4">
-                    Demo excerpt from Subhan Khan's portfolio
-                  </a>
                   
                   <div className="flex items-center gap-4 mt-auto pt-6 border-t border-border/50">
                     <img src={testimonial.image} alt={testimonial.name} loading="lazy" width={48} height={48} className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
