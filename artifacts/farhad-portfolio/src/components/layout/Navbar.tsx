@@ -70,7 +70,7 @@ export function Navbar() {
             aria-label={`${SITE_CONFIG.name} — Home`}
             className="text-[22px] font-extrabold tracking-tight text-white inline-flex items-baseline leading-none rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"
           >
-            FARHAD<span className="text-sky-400">.</span>
+            FARHAD<span className="text-primary">.</span>
           </a>
 
           {/* Desktop Nav */}
